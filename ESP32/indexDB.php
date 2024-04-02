@@ -1,0 +1,37 @@
+<?php
+include("../con_db.php");
+
+$sql = "SELECT * FROM led_status;";
+$result   = mysqli_query($conex, $sql);
+$row  = mysqli_fetch_assoc($result);
+
+// Consulta a la base de datos
+if (isset($_POST['toggle_LED'])) {
+	$sql = "SELECT * FROM led_status;";
+	$result   = mysqli_query($conex, $sql);
+	$row  = mysqli_fetch_assoc($result);
+	if($row['status'] == 0){
+		$update = mysqli_query($conex, "UPDATE led_status SET status = 1 WHERE id = 1;");
+        header("Location: index2.php");
+	}
+}
+if (isset($_POST["disable_LED"])) {
+    $sql = "SELECT * FROM led_status;";
+    $result   = mysqli_query($conex, $sql);
+    $row  = mysqli_fetch_assoc($result);
+	if($row['status'] == 1){
+		$update = mysqli_query($conex, "UPDATE led_status SET status = 0 WHERE id = 1;");
+        header("Location: index2.php");
+	}
+}
+
+//resultado impreso a app web
+if ($row["status"] == 0){
+    $estado ="OFF";
+} elseif ($row["status"] == 1) {
+    $estado = "ON";
+} else {
+    $estado = "ERROR";
+}
+
+?>
