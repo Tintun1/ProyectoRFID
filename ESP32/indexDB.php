@@ -5,6 +5,19 @@ $sql = "SELECT * FROM led_status;";
 $result   = mysqli_query($conex, $sql);
 $row  = mysqli_fetch_assoc($result);
 
+if (isset($_POST["actualizar"])) {
+	$linea_1 = $_POST["linea_1"];
+	$linea_2 = $_POST["linea_2"];
+	$sql = "UPDATE lcd_status SET lcd_text='$linea_1' WHERE id = 1;";
+	$sql2 = "UPDATE lcd_status SET lcd_text='$linea_2' WHERE id = 2;";
+	if (mysqli_query($conex, $sql) and mysqli_query($conex, $sql2)) {
+		echo "<h3 class='ok'>Actualización exitosa</h1>";
+	} else {
+		echo "<h3 class='bad'>Error al actualizar: </h1>";
+	}
+
+}
+
 // Consulta a la base de datos
 if (isset($_POST['toggle_LED'])) {
 	$sql = "SELECT * FROM led_status;";

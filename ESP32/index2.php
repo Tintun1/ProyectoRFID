@@ -19,6 +19,12 @@
 			<input id="submit_button" type="submit" name="toggle_LED" value="Toggle LED"/>
             <input type="submit" name="disable_LED" value="Disable LED">
 		</form>
+        <h2>LCD display text</h2>
+        <form action="" method="post" id="LCD" enctype="multipart/form-data">
+            <input type="text" placeholder="Linea 1" name="linea_1">
+            <input type="text" placeholder="Linea 2" name="linea_2">
+            <input type="submit" name="actualizar">
+        </form>
     </div>
 </body>
 </html>

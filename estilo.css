@@ -97,6 +97,10 @@ input[type='submit']{
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+video {
+    width: 100%;
+    height: auto;
+}
 .ok {
 	text-align: center;
 	width: 100%;
@@ -134,7 +138,7 @@ input[type="submit"]:hover {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
-.loginlink:hover{
+.login-link:hover{
     background-color: rgb(35, 75, 134);
 }
 .admin-panel{
@@ -165,6 +169,17 @@ input[type="submit"]:hover {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+.publicacion{
+    text-align: right;
+    padding: 10px 20px;
+    display: inline-block;
+    padding: 7px 20px;
+    background-color: rgb(53, 182, 53);
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 .img-responsive {
     max-width: 100%;
     height: auto;
@@ -180,4 +195,30 @@ input[type="submit"]:hover {
 .index-img {
     max-width: 100%;
     max-height: 100%;
+}
+.img-post{
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+}
+.post-pic{
+    width: 15%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+/* Estilos para el enlace activo */
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
 }

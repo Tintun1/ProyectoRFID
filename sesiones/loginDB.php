@@ -6,7 +6,13 @@ if (isset($_POST["login"])) {
     if (strlen($_POST["name"]) >= 1 && strlen($_POST["email"]) >= 1 ) {
         $name = trim($_POST["name"]);
         $email = trim($_POST["email"]);
-
+        $sql = "SELECT profile_pic FROM datos WHERE nombre=? AND email=?";
+        $stmt = mysqli_prepare($conex, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $name, $email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row  = mysqli_fetch_assoc($result);
+        $_SESSION['profile_pic'] = $row['profile_pic'];
         // Consulta preparada para evitar la inyección SQL
         $sql = "SELECT * FROM datos WHERE nombre=? AND email=?";
         $stmt = mysqli_prepare($conex, $sql);
@@ -26,7 +32,7 @@ if (isset($_POST["login"])) {
                 $_SESSION['fecha_registro'] = $row["fecha_registro"];
                 // Regenerar el ID de sesión para mayor seguridad
                 session_regenerate_id(true);
-                header("Location: ../inicio.html"); // Redirigir al panel de control
+                header("Location: ../inicio.php"); // Redirigir al panel de control
                 exit;
             } else {
                 // Contraseña incorrecta
